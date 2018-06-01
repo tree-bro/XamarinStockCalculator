@@ -35,8 +35,6 @@ namespace StockCalculator
 
         private decimal assumedStockPriceGrowth = new decimal(0.02);
 
-        private string preferStockListFileName = "PreferStockList.csv";
-
         //temp variables for calculation
         private decimal totalInnerValue;
         private decimal currentInterest;
@@ -149,23 +147,22 @@ namespace StockCalculator
                 decimal.TryParse(stockInfo.LastTradingPrice, out marketPrice);
                 if(marketPrice > 0m)
                 {
-                    ProfitSharingPerShare.Text = Convert.ToString(marketPrice / stockInfo.ProfitSharingDictionary.Values.Where(n => n > 0m).Take(5).Sum() / 5);
+                    ProfitSharingPerShare.Text = marketPrice > 0 ? Convert.ToString(Math.Round(stockInfo.ProfitSharingDictionary.Values.Where(n => n > 0m).Take(5).Sum() / 5 / marketPrice * 100,2)) : "0";
                 }
+                StockName.Text = stockInfo.CompanyName;
             }
         }
 
         private string getHistoryFilePath()
         {
-            //return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "CalculationHistory.csv");
-            //return "CalculationHistory.csv"; 
             IFolder rootFolder = FileSystem.Current.LocalStorage;
             return Path.Combine(rootFolder.Path, "CalculationHistory.csv");
         }
 
         private async void BtnHistoryManagementClicked(object sender, EventArgs e)
         {
-            string result = await DisplayActionSheet("历史资料管理",null,null,new string[] { "保存当前资料","查看历史资料"});
-            if(result == "保存当前资料")
+            string result = await DisplayActionSheet("历史记录管理",null,null,new string[] { "保存当前记录","管理历史记录","清除历史记录"});
+            if(result == "保存当前记录")
             {
                 //DBUtils.initDBConnection("Data Source=StockCalculationDB.db3");
                 //DBUtils.executeCommand("DELETE FROM CalculationHistory WHERE StockID=" + StockID.Text);
@@ -175,18 +172,112 @@ namespace StockCalculator
                 //{
                 //    File.Create(getHistoryFilePath());
                 //}
-                
-                string[] originalContent = File.ReadAllLines(getHistoryFilePath());
-                List<string> inputContent = originalContent.Where(s => !s.StartsWith(StockID.Text + ",") && s.Trim() != "").ToList();
-                inputContent.Add(StockID.Text + "," + MarketPrice.Text + "," + ProfitPerShare.Text + "," + ProfitSharingPerShare.Text + "," + TradeTax.Text + "," + CompanyDuration.Text + "," + DiscountRate.Text + "," + NaturalGrowthRate.Text + "," + HighSpeedGrowthRate.Text + "," + HighSpeedGrowthDuration.Text + "," + ProfitSharingTax.Text + "," + DepressionCycle.Text + "," + DepressionLossRate.Text + "," + StockHeldDuration.Text);
-                File.WriteAllLines(getHistoryFilePath(), inputContent.ToArray());
-            }else if(result == "查看历史资料")
+                StringBuilder sb = new StringBuilder();
+                sb.Append("当前记录即将被保存至代码[");
+                sb.Append(StockID.Text);
+                sb.Append("]下，是否确认保存？");
+                bool confirmSaveResult = await DisplayAlert("确认保存记录？", sb.ToString(), "OK", "Cancel");
+                if (confirmSaveResult)
+                {
+                    string[] originalContent = File.Exists(getHistoryFilePath()) ? File.ReadAllLines(getHistoryFilePath()) : null;
+                    List<string> inputContent = originalContent == null || originalContent.Length == 0 ? new List<string>() : originalContent.Where(s => !s.StartsWith(StockID.Text + ",") && s.Trim() != "").ToList();
+                    StringBuilder contentBuilder = new StringBuilder();
+                    contentBuilder.Append(StockID.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(StockName.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(MarketPrice.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(ProfitPerShare.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(ProfitSharingPerShare.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(TradeTax.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(CompanyDuration.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(DiscountRate.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(NaturalGrowthRate.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(HighSpeedGrowthRate.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(HighSpeedGrowthDuration.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(ProfitSharingTax.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(DepressionCycle.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(DepressionLossRate.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(StockHeldDuration.Text);
+                    contentBuilder.Append(",");
+                    contentBuilder.Append(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    inputContent.Add(contentBuilder.ToString());
+                    File.WriteAllLines(getHistoryFilePath(), inputContent.ToArray());
+                }
+            }else if(result == "管理历史记录")
             {
                 if (File.Exists(getHistoryFilePath()))
                 {
-                    DisplayAlert("历史记录", File.ReadAllText(getHistoryFilePath()), "OK");
+                    //DisplayAlert("历史记录", File.ReadAllText(getHistoryFilePath()), "OK");
+                    string[] contentArray = File.ReadAllLines(getHistoryFilePath());
+                    string[] displayArray = contentArray.Select(s => s.Split(',')).Select(sArr=>"股票代码:"+sArr[0]+"，股票名称:"+sArr[1]+"，更新日期:"+sArr.Last()).ToArray();
+                    string checkHistoryResult = await DisplayActionSheet("管理历史记录", null, null, displayArray);
+                    if (!displayArray.Contains(checkHistoryResult)) return;
+                    string checkHistoryActionResult = await DisplayActionSheet("如何操作？", null, null, new string[] { "导入","删除","退出"});
+                    int importIdx = displayArray.ToList().FindIndex(0, new Predicate<string>(s => s == checkHistoryResult));
+                    if (checkHistoryActionResult == "导入")
+                    {
+                        if (importIdx >= 0)
+                        {
+                            string[] importContentArray = contentArray[importIdx].Split(',');
+                            int idx = 0;
+                            StockID.Text = importContentArray[idx];
+                            idx++;
+                            StockName.Text = importContentArray[idx];
+                            idx++;
+                            MarketPrice.Text = importContentArray[idx];
+                            idx++;
+                            ProfitPerShare.Text = importContentArray[idx];
+                            idx++;
+                            ProfitSharingPerShare.Text = importContentArray[idx];
+                            idx++;
+                            TradeTax.Text = importContentArray[idx];
+                            idx++;
+                            CompanyDuration.Text = importContentArray[idx];
+                            idx++;
+                            DiscountRate.Text = importContentArray[idx];
+                            idx++;
+                            NaturalGrowthRate.Text = importContentArray[idx];
+                            idx++;
+                            HighSpeedGrowthRate.Text = importContentArray[idx];
+                            idx++;
+                            HighSpeedGrowthDuration.Text = importContentArray[idx];
+                            idx++;
+                            ProfitSharingTax.Text = importContentArray[idx];
+                            idx++;
+                            DepressionCycle.Text = importContentArray[idx];
+                            idx++;
+                            DepressionLossRate.Text = importContentArray[idx];
+                            idx++;
+                            StockHeldDuration.Text = importContentArray[idx];
+                        }
+                    }
+                    else if(checkHistoryActionResult == "删除")
+                    {
+                        File.WriteAllLines(getHistoryFilePath(),contentArray.Where(s=>s!= contentArray[importIdx]));
+                    }
+                    
                 }
                 
+            }else if(result == "清除历史记录")
+            {
+                bool clearHistoryResult = await DisplayAlert("清除历史记录","是否确认清除所有历史记录？","OK","Cancel");
+                if (clearHistoryResult)
+                {
+                    File.WriteAllText(getHistoryFilePath(), "");
+                }
             }
         }
 

@@ -1,7 +1,5 @@
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\StockCalculator.Android.dll
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\StockCalculator.Android.pdb
-C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\com.companyname.StockCalculator.apk
-C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\com.companyname.StockCalculator-Signed.apk
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\StockCalculator.dll
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\StockCalculator.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\StockCalculator.Android.csprojResolveAssemblyReference.cache
@@ -9,7 +7,6 @@ C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\StockCalculator.Android.csproj.CopyComplete
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\StockCalculator.Android.dll
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\StockCalculator.Android.pdb
-C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\bin\com.companyname.StockCalculator.apk
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\res\drawable\icon.png
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\res\drawable-hdpi\icon.png
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\res\drawable-xhdpi\icon.png
@@ -19,9 +16,17 @@ C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\res\values\styles.xml
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\R.cs.flag
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\uploadflags.txt
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\TreeBro.StockCalculator.apk
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\TreeBro.StockCalculator-Signed.apk
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\bin\TreeBro.StockCalculator.apk
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\res\drawable\calculatoricon.png
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\res\drawable-hdpi\calculatoricon.png
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\res\drawable-xhdpi\calculatoricon.png
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\res\drawable-xxhdpi\calculatoricon.png
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\HtmlAgilityPack.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\Mono.Android.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\mscorlib.pdb
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\SQLite-net.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\System.Core.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\System.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\System.Net.Http.pdb
@@ -41,6 +46,7 @@ C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\HtmlAgilityPack.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\Mono.Android.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\mscorlib.pdb
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\SQLite-net.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\StockCalculator.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\System.Core.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\System.pdb
@@ -77,6 +83,7 @@ C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\Mono.Android.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\Mono.Security.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\mscorlib.pdb
+C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\SQLite-net.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\StockCalculator.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\System.Core.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\System.Data.pdb
@@ -85,9 +92,6 @@ C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\System.Runtime.Serialization.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\System.ServiceModel.Internals.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\System.Xml.pdb
-C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\SQLite-net.pdb
-C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\SQLite-net.pdb
-C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\android\assets\SQLite-net.pdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\bin\Release\StockCalculator.Android.dll
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\StockCalculator.Android.dll.mdb
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator.Android\obj\Release\linksrc\FormsViewGroup.dll.mdb
