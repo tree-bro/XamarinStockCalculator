@@ -19,14 +19,6 @@ public class CarouselPageRenderer
 	}
 
 
-	public CarouselPageRenderer (android.content.Context p0, android.util.AttributeSet p1, int p2)
-	{
-		super (p0, p1, p2);
-		if (getClass () == CarouselPageRenderer.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.CarouselPageRenderer, Xamarin.Forms.Platform.Android, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0, p1, p2 });
-	}
-
-
 	public CarouselPageRenderer (android.content.Context p0, android.util.AttributeSet p1)
 	{
 		super (p0, p1);
@@ -40,6 +32,14 @@ public class CarouselPageRenderer
 		super (p0);
 		if (getClass () == CarouselPageRenderer.class)
 			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.CarouselPageRenderer, Xamarin.Forms.Platform.Android, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0 });
+	}
+
+
+	public CarouselPageRenderer (android.content.Context p0, android.util.AttributeSet p1, int p2)
+	{
+		super (p0, p1, p2);
+		if (getClass () == CarouselPageRenderer.class)
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.CarouselPageRenderer, Xamarin.Forms.Platform.Android, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0, p1, p2 });
 	}
 
 

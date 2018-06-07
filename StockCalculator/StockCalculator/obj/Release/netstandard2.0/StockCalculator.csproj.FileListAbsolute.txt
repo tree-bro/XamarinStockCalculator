@@ -11,3 +11,17 @@ C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator\obj\Rel
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.Properties.Resources.resources
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.csproj.GenerateResource.cache
 C:\Users\hx\source\repos\StockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.csprojResolveAssemblyReference.cache
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\bin\Release\netstandard2.0\StockCalculator.deps.json
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\bin\Release\netstandard2.0\StockCalculator.dll
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\bin\Release\netstandard2.0\StockCalculator.pdb
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.Properties.Resources.resources
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.csproj.GenerateResource.cache
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.csproj.CoreCompileInputs.cache
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.AssemblyInfoInputs.cache
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.AssemblyInfo.cs
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.dll
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.pdb
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\StockCalculator.csprojResolveAssemblyReference.cache
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\App.xaml.g.cs
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\MainPage.xaml.g.cs
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator\obj\Release\netstandard2.0\XamlC.stamp

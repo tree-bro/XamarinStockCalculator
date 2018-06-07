@@ -289,7 +289,7 @@ namespace StockCalculator
             decimal.TryParse(TradeTax.Text.Trim(), out tradingTaxRate);
             tradingTaxRate = tradingTaxRate / 100M;
             decimal.TryParse(ProfitPerShare.Text.Trim(), out profitPerShare);
-            decimal.TryParse(ProfitSharingTax.Text.Trim(), out profitSharingRate);
+            decimal.TryParse(ProfitSharingPerShare.Text.Trim(), out profitSharingRate);
             profitSharingRate = profitSharingRate / 100M;
             short.TryParse(CompanyDuration.Text.Trim(), out companyDuration);
             decimal.TryParse(DiscountRate.Text.Trim(), out discountRate);
