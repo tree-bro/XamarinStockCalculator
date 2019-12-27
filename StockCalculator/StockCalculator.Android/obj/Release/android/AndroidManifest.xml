@@ -6,7 +6,7 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.INTERNET" />
   <application android:label="StockCalculator.Android" android:icon="@drawable/calculatoricon" android:name="android.app.Application" android:allowBackup="true">
-    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/calculatoricon" android:label="StockCalculator" android:theme="@style/MainTheme" android:name="md50a2525c0ac649b3ebeeaa00cd5b8a823.MainActivity">
+    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/calculatoricon" android:label="StockCalculator" android:theme="@style/MainTheme" android:name="md51074dce02e7e7a05028161b33e6f6dc2.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

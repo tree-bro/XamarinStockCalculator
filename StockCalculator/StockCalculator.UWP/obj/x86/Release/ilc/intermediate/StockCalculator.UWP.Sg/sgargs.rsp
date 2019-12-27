@@ -1,0 +1,12 @@
+﻿/ref:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\PreMergeILTransformed"
+/ref:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc"
+/ref:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\PreMergeILTransformed"
+/ref:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in\\"
+/ref:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.compiler\2.1.8\tools\x86\ilc\lib\Private\\"
+/ref:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in"
+/ref:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in\WinMetadata"
+/ca:System.Private.CoreLib
+/cscpath:"C:\Users\user\.nuget\packages\microsoft.net.native.compiler\2.1.8-arm64rel-26502-00\tools\csc"
+/out:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\SgGenerated\\"
+/int:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.Sg"
+"@E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.Sg\ComputedSerializationInput.txt"

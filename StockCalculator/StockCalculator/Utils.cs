@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +35,17 @@ namespace StockCalculator
             response.Close();
 
             return htmlDocument;
+        }
+
+        public static string loadJsonString(string url)
+        {
+            HttpWebResponse response = (HttpWebResponse)WebRequest.CreateHttp(url).GetResponse();
+            string jsonString = "";
+            using(StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+            {
+                jsonString = sr.ReadToEnd();
+            }
+            return jsonString;
         }
 
         public static StockMarketTypes checkMarketType(string stockID)
@@ -134,66 +146,82 @@ namespace StockCalculator
         /// <param name="stockInfo"></param>
         private static void parseCompanyBasicInfoCore(string url, ref StockInfo stockInfo)
         {
-            // The following implementation is based on Baidu Stock API.
-            // It might need to be changed if we decide to use other API instead.
-            HtmlAgilityPack.HtmlDocument StockInfoHtmlDocument = Utils.loadHtmlDocument(url, Encoding.GetEncoding("utf-8"));
+            //// The following implementation is based on Baidu Stock API.
+            //// It might need to be changed if we decide to use other API instead.
+            //HtmlAgilityPack.HtmlDocument StockInfoHtmlDocument = Utils.loadHtmlDocument(url, Encoding.GetEncoding("utf-8"));
 
-            HtmlNode stockInfoTableNode = StockInfoHtmlDocument.DocumentNode.SelectSingleNode("//div[@class='stock-bets']");
+            //HtmlNode stockInfoTableNode = StockInfoHtmlDocument.DocumentNode.SelectSingleNode("//div[@class='stock-bets']");
 
-            if (stockInfoTableNode != null)
+            //if (stockInfoTableNode != null)
+            //{
+            //    HtmlNode nameNode = stockInfoTableNode.SelectSingleNode("//a[@class='bets-name']");
+            //    HtmlNode dateNode = stockInfoTableNode.SelectSingleNode("//span[@class='state f-up']");
+            //    HtmlNode closePriceNode = stockInfoTableNode.SelectSingleNode("//strong[@class='_close']");
+            //    HtmlNode detailNode = stockInfoTableNode.SelectSingleNode("//div[@class='bets-content']//div");
+
+            //    stockInfo.CompanyName = nameNode.InnerText.Trim();
+            //    stockInfo.LastTradingPrice = closePriceNode.InnerText.Trim();
+            //    stockInfo.DateOfInfo = dateNode.InnerText.Trim().Replace("&nbsp;", "");
+            //    decimal companyProfitPerShare = decimal.Zero;
+            //    decimal peRatio = decimal.Zero;
+            //    decimal lastTradingPrice = decimal.Zero;
+            //    decimal.TryParse(closePriceNode.InnerText.Trim(), out lastTradingPrice);
+            //    foreach (HtmlNode subNode in detailNode.ChildNodes)
+            //    {
+            //        if (subNode.HasChildNodes)
+            //        {
+            //            string firstChildText = subNode.FirstChild.InnerText.Trim();
+            //            string lastChildText = subNode.LastChild.InnerText.Trim();
+            //            if (firstChildText.Equals("每股收益", StringComparison.CurrentCultureIgnoreCase))
+            //            {
+            //                decimal.TryParse(lastChildText, out companyProfitPerShare);
+            //            }
+            //            else if (firstChildText.Contains("市盈率"))
+            //            {
+            //                stockInfo.PERatio = lastChildText;
+            //                decimal.TryParse(lastChildText, out peRatio);
+            //            }
+            //            // if failed to parse last trading price (most likely to happen during long holiday), then use previous closing price instead
+            //            else if (lastTradingPrice == decimal.Zero &&
+            //                firstChildText.Equals("昨收", StringComparison.CurrentCultureIgnoreCase))
+            //            {
+            //                decimal.TryParse(lastChildText, out lastTradingPrice);
+            //                stockInfo.DateOfInfo += "(顺延前一收盘价)";
+            //            }
+            //        }
+            //    }
+
+            //    // Recalculate the profit per share by the past days.
+            //    // Always use PERatio for bellow calculation if available.
+            //    if (peRatio > 0)
+            //    {
+            //        //companyProfitPerShare = decimal.Round(lastTradingPrice / peRatio * 365M / DateTime.Today.DayOfYear, 4);
+            //        companyProfitPerShare = decimal.Round(lastTradingPrice / peRatio, 4);
+            //    }
+            //    else if (companyProfitPerShare > 0)
+            //    {
+            //        //companyProfitPerShare = decimal.Round(companyProfitPerShare * 365M / DateTime.Today.DayOfYear, 4);
+            //        companyProfitPerShare = decimal.Round(companyProfitPerShare, 4);
+            //    }
+
+            //    stockInfo.CompanyProfitPerShare = Convert.ToString(companyProfitPerShare);
+            //}
+            try
             {
-                HtmlNode nameNode = stockInfoTableNode.SelectSingleNode("//a[@class='bets-name']");
-                HtmlNode dateNode = stockInfoTableNode.SelectSingleNode("//span[@class='state f-up']");
-                HtmlNode closePriceNode = stockInfoTableNode.SelectSingleNode("//strong[@class='_close']");
-                HtmlNode detailNode = stockInfoTableNode.SelectSingleNode("//div[@class='bets-content']//div");
-
-                stockInfo.CompanyName = nameNode.InnerText.Trim();
-                stockInfo.LastTradingPrice = closePriceNode.InnerText.Trim();
-                stockInfo.DateOfInfo = dateNode.InnerText.Trim().Replace("&nbsp;", "");
-                decimal companyProfitPerShare = decimal.Zero;
-                decimal peRatio = decimal.Zero;
-                decimal lastTradingPrice = decimal.Zero;
-                decimal.TryParse(closePriceNode.InnerText.Trim(), out lastTradingPrice);
-                foreach (HtmlNode subNode in detailNode.ChildNodes)
-                {
-                    if (subNode.HasChildNodes)
-                    {
-                        string firstChildText = subNode.FirstChild.InnerText.Trim();
-                        string lastChildText = subNode.LastChild.InnerText.Trim();
-                        if (firstChildText.Equals("每股收益", StringComparison.CurrentCultureIgnoreCase))
-                        {
-                            decimal.TryParse(lastChildText, out companyProfitPerShare);
-                        }
-                        else if (firstChildText.Contains("市盈率"))
-                        {
-                            stockInfo.PERatio = lastChildText;
-                            decimal.TryParse(lastChildText, out peRatio);
-                        }
-                        // if failed to parse last trading price (most likely to happen during long holiday), then use previous closing price instead
-                        else if (lastTradingPrice == decimal.Zero &&
-                            firstChildText.Equals("昨收", StringComparison.CurrentCultureIgnoreCase))
-                        {
-                            decimal.TryParse(lastChildText, out lastTradingPrice);
-                            stockInfo.DateOfInfo += "(顺延前一收盘价)";
-                        }
-                    }
-                }
-
-                // Recalculate the profit per share by the past days.
-                // Always use PERatio for bellow calculation if available.
-                if (peRatio > 0)
-                {
-                    //companyProfitPerShare = decimal.Round(lastTradingPrice / peRatio * 365M / DateTime.Today.DayOfYear, 4);
-                    companyProfitPerShare = decimal.Round(lastTradingPrice / peRatio, 4);
-                }
-                else if (companyProfitPerShare > 0)
-                {
-                    //companyProfitPerShare = decimal.Round(companyProfitPerShare * 365M / DateTime.Today.DayOfYear, 4);
-                    companyProfitPerShare = decimal.Round(companyProfitPerShare, 4);
-                }
-
-                stockInfo.CompanyProfitPerShare = Convert.ToString(companyProfitPerShare);
+                string jsonString = loadJsonString(url);
+                StockBasicInfoParser parser = JsonConvert.DeserializeObject<StockBasicInfoParser>(jsonString);
+                stockInfo.DateOfInfo = Convert.ToString(parser.snapShot.date) + " " + Convert.ToString(parser.snapShot.time);
+                stockInfo.LastTradingPrice = Convert.ToString(Math.Round(parser.snapShot.preClose, 5));
+                stockInfo.PERatio = Convert.ToString(Math.Round(parser.snapShot.peRatio, 5));
+                stockInfo.CompanyProfitPerShare = Convert.ToString(Math.Round(parser.snapShot.perShareEarn, 5));
+                stockInfo.CompanyName = parser.snapShot.stockBasic.stockName;
             }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+            
+            
         }
 
         /// <summary>

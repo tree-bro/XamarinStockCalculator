@@ -1,0 +1,39 @@
+﻿/debug:pdbonly
+/nowarn:0436;0618;1668;1685;1701;1702
+/debug+
+/nostdlib+
+/optimize+
+/out:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop.dll"
+/pdb:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop.pdb"
+/platform:anycpu
+/warnaserror+
+/unsafe
+/nologo
+/target:library
+/define:MCG_PRE_BUILD
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.Private.CoreLib.iltoc"
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.Private.Interop.iltoc"
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.Private.Uri.iltoc"
+/r:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in\System.Reflection.DispatchProxy.dll"
+/r:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in\System.Reflection.dll"
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.Runtime.iltoc"
+/r:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in\System.Runtime.InteropServices.dll"
+/r:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in\System.Runtime.InteropServices.WindowsRuntime.dll"
+/r:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in\System.Numerics.Vectors.dll"
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.Threading.iltoc"
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.Diagnostics.Debug.iltoc"
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.Runtime.Extensions.iltoc"
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.Collections.iltoc"
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.ObjectModel.iltoc"
+/r:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in\System.Runtime.WindowsRuntime.dll"
+/r:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\in\System.Runtime.WindowsRuntime.UI.Xaml.dll"
+/r:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.native.sharedlibrary\2.1.8\tools\SharedLibrary\ret\AnalysisILToc\System.Private.SharedLibrary.Interop.Generated.iltoc"
+/r:"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\System.Private.StockCalculator.UWP.Generated.dll"
+"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop\Adapters.g.cs"
+"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop\AssemblyInfo.g.cs"
+"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop\Data.g.cs"
+"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop\Helpers.g.cs"
+"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop\ImplTypes.g.cs"
+"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop\PInvoke.g.cs"
+"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop\SafeTypes.g.cs"
+"E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\obj\x86\Release\ilc\intermediate\StockCalculator.UWP.McgInterop\SharedStubs.g.cs"

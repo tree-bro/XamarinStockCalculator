@@ -110,6 +110,7 @@ class MonoPackageManager_Resources {
 		"FormsViewGroup.dll",
 		"HtmlAgilityPack.dll",
 		"Microsoft.Data.Sqlite.dll",
+		"Newtonsoft.Json.dll",
 		"PCLStorage.Abstractions.dll",
 		"PCLStorage.dll",
 		"SQLite-net.dll",

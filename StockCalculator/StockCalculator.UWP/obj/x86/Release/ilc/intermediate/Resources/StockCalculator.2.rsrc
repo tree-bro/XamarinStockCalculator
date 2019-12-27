@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:StockCalculator"
+             x:Class="StockCalculator.MainPage">
+
+    <StackLayout>
+        <TableView>
+            <TableSection Title="股票基本资料">
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="600000" Label="股票代码(沪、深、港)" x:Name="StockID"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text=" " Label="股票名称" x:Name="StockName"></EntryCell>
+            </TableSection>
+            <TableSection Title="服务器可得参数">
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="10.0" Label="当前市价(元)" x:Name="MarketPrice"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="1.0" Label="每股盈利(元)" x:Name="ProfitPerShare"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="20.0" Label="每股分红比例(%)" x:Name="ProfitSharingPerShare"></EntryCell>
+            </TableSection>
+            <TableSection Title="手动输入参数">
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="1.0" Label="交易印花税(%)" x:Name="TradeTax"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="30" Label="企业存续期(年)" x:Name="CompanyDuration"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="7.0" Label="折现率(%)" x:Name="DiscountRate"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="0.5" Label="自然增长率(%)" x:Name="NaturalGrowthRate"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="5.0" Label="高速增长率(%)" x:Name="HighSpeedGrowthRate"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="0" Label="高速增长期(年)" x:Name="HighSpeedGrowthDuration"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="0.5" Label="红股税率(%)" x:Name="ProfitSharingTax"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="7" Label="衰退周期(年)" x:Name="DepressionCycle"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="90.0" Label="衰退期损失率(%)" x:Name="DepressionLossRate"></EntryCell>
+                <EntryCell LabelColor="DarkBlue" HorizontalTextAlignment="End" Text="5" Label="平均持股周期(年)" x:Name="StockHeldDuration"></EntryCell>
+            </TableSection>
+        </TableView>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+            <Button BackgroundColor="LightYellow" Text="计算内在价值" x:Name="Calculate" Clicked="BtnCalculateClicked"></Button>
+            <Button BackgroundColor="LightYellow" Text="读取公司资料" x:Name="ParseCompanyInfo" Clicked="BtnParseCompanyInfoClicked"></Button>
+            <Button BackgroundColor="LightYellow" Text="历史资料管理" x:Name="HistoryManagement" Clicked="BtnHistoryManagementClicked"></Button>
+        </StackLayout>
+    </StackLayout>
+    
+</ContentPage>

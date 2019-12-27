@@ -9,7 +9,8 @@
             @"http://www.sse.com.cn/assortment/stock/list/info/turnover/index.shtml?COMPANY_CODE=[_STOCK_ID_]";
 
         public static string baiduTemplateByID =
-            @"https://gupiao.baidu.com/stock/[_STOCK_ID_].html";
+            //@"https://gupiao.baidu.com/stock/[_STOCK_ID_].html";
+            @"https://gupiao.baidu.com/api/stocks/stockbets?from=h5&os_ver=0&cuid=xxx&vv=2.2&format=json&stock_code=[_STOCK_ID_]";
 
         public static string ifengCaiWuTemplateByID =
             @"http://app.finance.ifeng.com/data/stock/tab_cwjk.php?symbol=[_STOCK_ID_]";

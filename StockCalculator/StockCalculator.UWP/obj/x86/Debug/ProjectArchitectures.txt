@@ -1,0 +1,1 @@
+E:\hx\source\XamarinStockCalculator\StockCalculator\StockCalculator.UWP\StockCalculator.UWP.csproj;x86

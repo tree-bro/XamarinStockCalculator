@@ -1,0 +1,6 @@
+StockCalculator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  StockCalculator.Properties.Resources.resources
+  StockCalculator.App.xaml
+  StockCalculator.MainPage.xaml
+  StockCalculator.CalculationHistory.csv
+  StockCalculator.StockCalculationDB.db3

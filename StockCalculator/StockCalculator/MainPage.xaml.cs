@@ -1,4 +1,5 @@
-﻿using PCLStorage;
+﻿using Newtonsoft.Json;
+using PCLStorage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -107,52 +108,82 @@ namespace StockCalculator
             DisplayAlert("计算结果", displaySuccessMessage, "OK");
         }
 
-        public async void BtnParseCompanyInfoClicked(object sender, EventArgs e)
+        public void BtnParseCompanyInfoClicked(object sender, EventArgs e)
         {
-            string stockID = StockID.Text.Trim();
-            string originalStockID = stockID;
-            StockMarketTypes marketType = Utils.checkMarketType(stockID);
-
-            switch (marketType)
+            System.Threading.ThreadPool.QueueUserWorkItem(async o => 
             {
-                case StockMarketTypes.CHINA_SZ_EXCHANGE_MARKET:
-                    stockID = "sz" + stockID;
-                    break;
-                case StockMarketTypes.CHINA_SH_EXCHANGE_MARKET:
-                    stockID = "sh" + stockID;
-                    break;
-                case StockMarketTypes.HK_EXCHANGE_MARKET:
-                    stockID = "hk" + stockID;
-                    break;
-                case StockMarketTypes.UNKNOWN:
-                    await DisplayAlert("未知的股票编码类型", PromptMessages.unknownStockIDMessageZH, "Dismiss");
-                    break;
-            }
-
-            string stockInfoRequestURL = URLTemplates.baiduTemplateByID.Replace("[_STOCK_ID_]", stockID);
-            string profitPerShareRequestURL = URLTemplates.ifengCaiWuTemplateByID.Replace("[_STOCK_ID_]", originalStockID);
-            string lastProfitSharingRequestURL = URLTemplates.ifengProfitSharingTemplateByID.Replace("[_STOCK_ID_]", originalStockID);
-
-            StockInfo stockInfo = new StockInfo();
-
-            Utils.parseCompanyBasicInfo(stockInfoRequestURL, ref stockInfo);
-            Utils.parseCompanyProfitSharing(lastProfitSharingRequestURL, ref stockInfo);
-
-            bool parseInfo = await DisplayAlert("是否导入公司资料？", stockInfo.printInfo(), "YES", "NO");
-            if (parseInfo)
-            {
-                MarketPrice.Text = stockInfo.LastTradingPrice;
-                ProfitPerShare.Text = stockInfo.CompanyProfitPerShare;
-                decimal marketPrice = 0m;
-                decimal.TryParse(stockInfo.LastTradingPrice, out marketPrice);
-                if(marketPrice > 0m)
+                try
                 {
-                    ProfitSharingPerShare.Text = marketPrice > 0 ? Convert.ToString(Math.Round(stockInfo.ProfitSharingDictionary.Values.Where(n => n > 0m).Take(5).Sum() / 5 / marketPrice * 100,2)) : "0";
-                }
-                StockName.Text = stockInfo.CompanyName;
-            }
-        }
+                    //ProgressBar pb = new ProgressBar();
+                    Device.BeginInvokeOnMainThread(() => {
+                        ParseCompanyInfo.IsEnabled = false;
+                        ParseCompanyInfo.Text = "资料获取中...";
+                    });
 
+                    string stockID = StockID.Text.Trim();
+                    string originalStockID = stockID;
+                    StockMarketTypes marketType = Utils.checkMarketType(stockID);
+
+                    switch (marketType)
+                    {
+                        case StockMarketTypes.CHINA_SZ_EXCHANGE_MARKET:
+                            stockID = "sz" + stockID;
+                            break;
+                        case StockMarketTypes.CHINA_SH_EXCHANGE_MARKET:
+                            stockID = "sh" + stockID;
+                            break;
+                        case StockMarketTypes.HK_EXCHANGE_MARKET:
+                            stockID = "hk" + stockID;
+                            break;
+                        case StockMarketTypes.UNKNOWN:
+                            await DisplayAlert("未知的股票编码类型", PromptMessages.unknownStockIDMessageZH, "Dismiss");
+                            break;
+                    }
+
+                    string stockInfoRequestURL = URLTemplates.baiduTemplateByID.Replace("[_STOCK_ID_]", stockID);
+                    string profitPerShareRequestURL = URLTemplates.ifengCaiWuTemplateByID.Replace("[_STOCK_ID_]", originalStockID);
+                    string lastProfitSharingRequestURL = URLTemplates.ifengProfitSharingTemplateByID.Replace("[_STOCK_ID_]", originalStockID);
+
+                    StockInfo stockInfo = new StockInfo();
+
+                    Utils.parseCompanyBasicInfo(stockInfoRequestURL, ref stockInfo);
+                    Utils.parseCompanyProfitSharing(lastProfitSharingRequestURL, ref stockInfo);
+
+                    //string jsonString = Utils.loadJsonString(stockInfoRequestURL);
+                    //StockBasicInfoParser parser = JsonConvert.DeserializeObject<StockBasicInfoParser>(jsonString);
+                    
+                    Device.BeginInvokeOnMainThread(new Action(async () => {
+                        bool parseInfo = await DisplayAlert("是否导入公司资料？", stockInfo.printInfo(), "YES", "NO");
+                        if (parseInfo)
+                        {
+                            decimal marketPrice = 0m;
+                            decimal.TryParse(stockInfo.LastTradingPrice, out marketPrice);
+                            MarketPrice.Text = stockInfo.LastTradingPrice;
+                            ProfitPerShare.Text = stockInfo.CompanyProfitPerShare;
+                            if (marketPrice > 0m)
+                            {
+                                ProfitSharingPerShare.Text = marketPrice > 0 ? Convert.ToString(Math.Round(stockInfo.ProfitSharingDictionary.Values.Where(n => n > 0m).Take(5).Sum() / 5 / marketPrice * 100, 2)) : "0";
+                            }
+                            StockName.Text = stockInfo.CompanyName;
+                        }
+                    }));
+                    
+                }
+                catch(Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
+                }
+                finally
+                {
+                    Device.BeginInvokeOnMainThread(() => {
+                        ParseCompanyInfo.IsEnabled = true;
+                        ParseCompanyInfo.Text = "读取公司资料";
+                    });
+                }
+                
+            });
+        }
+        
         private string getHistoryFilePath()
         {
             IFolder rootFolder = FileSystem.Current.LocalStorage;
